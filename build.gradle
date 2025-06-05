@@ -66,7 +66,7 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     // 目前只有 CurseForge Maven 能够支持同时下载模组和源码，方便开发
     // Current Only CurseForge Maven can support downloading both mod and source code, which is convenient for development
-    implementation fg.deobf('curse.maven:touhou-little-maid-355044:6440955-sources-6482784')
+    implementation fg.deobf('curse.maven:touhou-little-maid-355044:6613821-sources-6613853')
 }
 
 processResources {

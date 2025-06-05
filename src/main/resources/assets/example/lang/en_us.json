@@ -1,4 +1,5 @@
 {
   "task.example.custom_task": "Custom Task",
-  "task.example.custom_task.desc": "Custom Task Desc"
+  "task.example.custom_task.desc": "Custom Task Desc",
+  "overlay.example.apple.tips": "You can right-click with an apple to add a 60-second damage resistance effect"
 }
