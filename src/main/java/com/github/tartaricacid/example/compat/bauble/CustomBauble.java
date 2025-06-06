@@ -77,35 +77,7 @@ public class CustomBauble implements IMaidBauble {
             // Consume durability, where maid.sendItemBreakMessage(stack) method is used to play the item break sound and particle effect
             // to nearby players when the maid's item is damaged
             stack.hurtAndBreak(1, maid, m -> maid.sendItemBreakMessage(stack));
-        }
-    }
-
-    /**
-     * 女仆死亡时触发的事件处理方法。
-     * 如果死亡原因不是无敌穿透伤害且佩戴此饰品，则给予发光效果并损坏饰品。
-     * <p>
-     * Event handler triggered when the maid dies.
-     * If the death is not caused by invulnerability-bypassing damage and the bauble is equipped, grants glowing effect and damages the bauble.
-     *
-     * @param event 女仆死亡事件 / Maid death event
-     */
-    @SubscribeEvent(priority = EventPriority.HIGH)
-    public void onMaidDeath(MaidDeathEvent event) {
-        EntityMaid maid = event.getMaid();
-        DamageSource source = event.getSource();
-        if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
-            return;
-        }
-        // ItemsUtil 是一个工具类，提供了一些与物品栏操作相关的静态方法，比如这里的 getBaubleSlotInMaid 就用于寻找女仆佩戴的对应当前饰品的槽位
-        // 如果女仆佩戴多个相同饰品，那么 getBaubleSlotInMaid 方法会返回第一个找到的槽位
-        // ItemsUtil is a utility class that provides static methods related to inventory operations
-        // Such as getBaubleSlotInMaid, which finds the slot of the corresponding bauble worn by the maid.
-        // If the maid wears multiple identical baubles, the getBaubleSlotInMaid method will return the first found slot.
-        int slot = ItemsUtil.getBaubleSlotInMaid(maid, this);
-        if (slot >= 0) {
-            maid.addEffect(new MobEffectInstance(MobEffects.GLOWING, 200));
-            ItemStack stack = maid.getMaidBauble().getStackInSlot(slot);
-            stack.hurtAndBreak(1, maid, m -> maid.sendItemBreakMessage(stack));
+            event.setCanceled(true);
         }
     }
 }
