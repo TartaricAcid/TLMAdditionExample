@@ -34,7 +34,7 @@ public class CustomTask implements IMaidTask {
     private static final ItemStack ICON = Items.APPLE.getDefaultInstance();
 
     /**
-     * 获取任务的唯一标识符
+     * 获取任务的 ID
      * <p>
      * Get the unique identifier of the task
      */

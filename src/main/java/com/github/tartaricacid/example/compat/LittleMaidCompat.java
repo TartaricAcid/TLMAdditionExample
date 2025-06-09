@@ -1,11 +1,13 @@
 package com.github.tartaricacid.example.compat;
 
 import com.github.tartaricacid.example.compat.bauble.CustomBauble;
+import com.github.tartaricacid.example.compat.brain.CustomExtraMaidBrain;
 import com.github.tartaricacid.example.compat.event.AppleInteractMaidEvent;
 import com.github.tartaricacid.example.compat.task.CustomTask;
 import com.github.tartaricacid.touhoulittlemaid.api.ILittleMaid;
 import com.github.tartaricacid.touhoulittlemaid.api.LittleMaidExtension;
 import com.github.tartaricacid.touhoulittlemaid.client.overlay.MaidTipsOverlay;
+import com.github.tartaricacid.touhoulittlemaid.entity.ai.brain.ExtraMaidBrainManager;
 import com.github.tartaricacid.touhoulittlemaid.entity.task.TaskManager;
 import com.github.tartaricacid.touhoulittlemaid.item.bauble.BaubleManager;
 import net.minecraft.world.item.Items;
@@ -61,5 +63,12 @@ public class LittleMaidCompat implements ILittleMaid {
         // 前面的是语言文件的 key，后面的是物品
         // The first part is the key in the language file, and the second part is the item
         maidTipsOverlay.addTips("overlay.example.apple.tips", Items.APPLE);
+    }
+
+    @Override
+    public void addExtraMaidBrain(ExtraMaidBrainManager manager) {
+        // 为 Brain 添加额外的内容
+        // Add extra content to the Brain
+        manager.addExtraMaidBrain(new CustomExtraMaidBrain());
     }
 }
